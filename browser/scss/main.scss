@@ -1,0 +1,61 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #fdfdfd;
+}
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+#main {
+  padding-top: 60px;
+  width: 1200px;
+  margin: 0 auto;
+
+  table.newEvent{
+    th > label{
+      color: black;
+      font-size:15px;
+    }
+    td > input{
+      margin-bottom: 10px;
+    }
+  }
+
+  event{
+    img{
+      height:200px;
+    }
+  }
+
+  #map {
+    height:80vh;
+    width:80vw;
+  }
+  .infoWindowContent {
+      font-size:  14px !important;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+  }
+  h2 {
+      margin-bottom:0;
+      margin-top: 0;
+  }
+
+  .class{
+    color:black;
+  }
+}
+
+@import 'directives/main';
+@import 'home/main';
+@import 'about/main';
+@import 'tutorial/main';
+@import 'login/main';

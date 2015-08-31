@@ -1,0 +1,13 @@
+<button ng-click="view('list')">List</button>
+<button ng-click="view('map')">Map</button>
+<event ng-show='list' ng-repeat='event in events'></event>
+<pre>
+{{showmap| json}}
+</pre>
+<div ng-show='showmap'>
+	<div ng-controller='MapCtrl'>
+		<div id="map"></div>
+		<div ng-repeat="marker in markers | orderBy : 'title'">
+	    </div>
+	</div>
+</div>
