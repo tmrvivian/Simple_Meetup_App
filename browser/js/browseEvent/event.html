@@ -1,8 +1,13 @@
 <div>
 	<h1>{{event.name}}</h1>
-	<p>Where:{{event.loc}}</p>
-	<p>When:{{event.date.slice(0,10)}}<p>
-	<p>Time:{{event.time[0]}}:{{event.time[1]}}<p>
+	<p>Where: {{event.locName}}</p>
+	<p>When: {{event.date.slice(0,10)}}<p>
+	<p>Time: {{event.time.slice(0,9)}}<p>
+	<p>Privacy Level: {{event.privacy}}<p>
 	<img src="{{event.img}}">
-	<button class='btn btn-success'>detail</button>
+	<button class='btn btn-success' ng-click="changeDetail()">{{detail}} Detail</button>
+	<section ng-show="show">
+		<p>Address: {{event.address}}</p>
+		<p>Event Detail: {{event.detail}}</p>
+	</section>
 </div>

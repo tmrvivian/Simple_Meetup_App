@@ -4,7 +4,14 @@ app.factory('EventFactory',function($http) {
 			return response.data;
 		});
 	}
+
+	function createEvent(event){
+		return $http.post('api/events/new', event).then(function(response){
+			return response.data;
+		})
+	}
 	return {
-		getEvents: getEvents
+		getEvents : getEvents,
+		createEvent : createEvent
 	}
 });

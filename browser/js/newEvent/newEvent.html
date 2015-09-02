@@ -1,13 +1,12 @@
-<form name="newEventForm" ng-submit="newCampaignForm.$valid && submit(event)" novalidate>
-    <!--<div class="form-error alert alert-danger" ng-if="newCampaignForm.$invalid && newCampaignForm.$submitted">Please fill out the fields!</div>-->
+<form ng-controller= 'newCtrl' name="newEventForm" ng-submit="newEventForm.$valid && submit(event)" novalidate>
         <table class='newEvent'>
             <tr>
                 <th class='label'>
                     <label>Name</label>
                 </th>
                 <td class='data'>
-                    <div class ="form-error alert alert-danger" ng-if="newCampaignForm.title.$error.required && newCampaignForm.$submitted" >You need to put in a title</div>
-                    <input type ="text" placeholder="ex: Bear Mountain Day Hikinng" ng-model="event.name" name="name" ng-minlength="1" required />
+                    <div class ="form-error alert alert-danger" ng-if="newEventForm.name.$error.required && newEventForm.$submitted" >You need to put in a title</div>
+                    <input type ="text" placeholder="ex: Amy's Birthday" ng-model="event.name" name="name" ng-minlength="1" required />
                 </td>
             </tr>
 
@@ -16,8 +15,8 @@
                     <label>Details</label>
                 </th>
                 <td class='data'>
-                    <div class ="form-error alert alert-danger" ng-if="newCampaignForm.title.$error.required && newCampaignForm.$submitted" >You need to put more info</div>
-                    <input type ="text" placehold="Add more info" ng-model="event.detail" name="title" ng-minlength="1" required />
+                    <div>Details about your event (optional)</div>
+                    <textarea type ="text" placehold="Add more info" ng-model="event.detail" name="detail"></textarea>
                 </td>
             </tr>
 
@@ -26,10 +25,9 @@
                     <label>Where</label>
                 </th>
                 <td class='data'>
-                    <input type ="text" placeholder="Add a place?" ng-model="event.loc" name="loc" ng-minlength="1" required />
-
-                    <div ng-controller="locSearch">
-                        <google-search location=location></google-search>
+                    <div>
+                        <div class ="form-error alert alert-danger" ng-if="newEventForm.locName.$error.required && newEventForm.$submitted" >You need to put in a location</div>   
+                        <google-search location="location" google-name="googleName" address="address" ng-model="event.locName" required></google-search>
                         <button ng-click="doSearch()" class="btn btn-large btn-primary">Search</button>
                     </div>
                 </td>
@@ -40,8 +38,9 @@
                     <label>When</label>
                 </th>
                 <td class='data'>
-                    <input type ="text" placeholder="Add a date?" ng-model="event.date" name="date" ng-minlength="1" required />
-                    <input type ="text" placeholder="Add a time?" ng-model="event.time" name="time" ng-minlength="1" required />
+                    <div class ="form-error alert alert-danger" ng-if="newEventForm.date.$error.required && newEventForm.$submitted" >You need to put in a date</div>
+                    <input type ="date" placeholder="Add a date?" ng-model="event.date" name="date" ng-minlength="1" required />
+                    <input type ="time" placeholder="Add a time?" ng-model="event.time" name="time"/>
                 </td>
             </tr>
 
@@ -50,14 +49,23 @@
                     <label>Privacy Level</label>
                 </th>
                 <td class='data'>
-                    <input type ="radio" name='privacy' value='Open to Public' checked>Open to Public
+                    <input type ="radio" name='privacy' value='Open to Public' ng-model="event.privacy" ng-checked="true"> Open to Public
                     <br>
-                    <input type ="radio" name='privacy' value='Host Approval Required' checked>Host Approval Required
+                    <input type ="radio" name='privacy' value='Host Approval Required' ng-model="event.privacy"> Host Approval Required
                     <br>
-                    <input type ="radio" name='privacy' value='Friends Only' checked>Friends Only
+                    <input type ="radio" name='privacy' value='Friends Only' ng-model="event.privacy"> Friends Only
                     <br>
-                    <input type ="radio" name='privacy' value='Invite Only' checked>Invite Only
+                    <input type ="radio" name='privacy' value='Invite Only' ng-model="event.privacy"> Invite Only
                     <br>
+                </td>
+            </tr>
+
+            <tr>
+                <th class='label'>
+                    <label>Image Link</label>
+                </th>
+                <td class='data'>
+                    <input type ="text" placehold="Paste image url" ng-model="event.img" name="img"/>
                 </td>
             </tr>
     </table>
@@ -68,5 +76,5 @@
             <div class="btn btn-primary" ngf-select ng-model="file" ngf-pattern="'image/*" accept="image/*">Choose</div>
             <div ng-if ="upload.data" class="uploadfile alert alert-success">{{upload.data}}</div>
     </div>
-    <button class="btn btn-success" ng-disabled="loading" type="submit">Submit</button>
+    <button class="btn btn-success" type="submit">Submit</button>
 </form>

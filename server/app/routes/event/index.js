@@ -8,3 +8,9 @@ router.get('/',function(req, res, next){
 		res.json(events);
 	})
 })
+
+router.post('/new',function(req,res,next){
+	Events.create(req.body).then(function(event){
+		res.json(event);
+	});
+});
