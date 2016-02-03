@@ -5,7 +5,7 @@ app.controller('MapCtrl', function ($scope, EventFactory) {
     $scope.$on('initMap', initMap);
 
     var mapOptions = {
-        zoom: 7,
+        zoom: 9,
         center: new google.maps.LatLng(41.6032207, -73.08774900000003),
         mapTypeId: google.maps.MapTypeId.TERRAIN
     }

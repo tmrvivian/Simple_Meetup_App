@@ -2,7 +2,7 @@
 	<h1>{{event.name}}</h1>
 	<p>Where: {{event.locName}}</p>
 	<p>When: {{event.date.slice(0,10)}}<p>
-	<p>Time: {{event.time.slice(0,9)}}<p>
+	<p>Time: {{event.time.slice(0,5)}}<p>
 	<p>Privacy Level: {{event.privacy}}<p>
 	<img src="{{event.img}}">
 	<button class='btn btn-success' ng-click="changeDetail()">{{detail}} Detail</button>
